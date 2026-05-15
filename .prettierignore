@@ -1,0 +1,12 @@
+# Languages supported by Biome
+*.css
+*.html
+*.js
+*.json
+*.jsonc
+*.jsx
+*.ts
+*.tsx
+
+# Lockfile
+pnpm-lock.yaml

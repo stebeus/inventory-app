@@ -1,0 +1,37 @@
+{
+	"name": "inventory-app",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"imports": {
+		"#root/*": "./src/*"
+	},
+	"scripts": {
+		"format": "prettier --write .",
+		"lint": "biome check --fix",
+		"populate-db": "node src/db/populate-db.js",
+		"serve": "node --watch src/server.js",
+		"start": "pnpm populate-db & pnpm serve",
+		"test": "node --test --watch"
+	},
+	"dependencies": {
+		"ejs": "^5.0.2",
+		"express": "^5.2.1",
+		"express-validator": "^7.3.2",
+		"http-errors": "^2.0.1",
+		"pg": "^8.20.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.15",
+		"@prettier/plugin-xml": "^3.4.2",
+		"prettier": "3.8.3",
+		"prettier-plugin-ejs": "^1.0.3"
+	},
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "^11.0.3",
+			"onFail": "download"
+		}
+	}
+}

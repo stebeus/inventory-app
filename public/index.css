@@ -1,0 +1,10 @@
+:root {
+	/* Sizing */
+	--size-2xs: 0.25rem;
+	--size-xs: 0.5rem;
+	--size-s: 0.75rem;
+	--size-m: 1rem;
+	--size-l: 1.25rem;
+	--size-xl: 1.5rem;
+	--size-2xl: 2rem;
+}

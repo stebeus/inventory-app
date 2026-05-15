@@ -1,0 +1,121 @@
+/* CSS DIRECTORY
+	1. DOCUMENT
+	2. FORMS
+	3. MEDIA
+	4. TYPOGRAPHY
+*/
+
+/* || DOCUMENT */
+
+*,
+::after,
+::backdrop,
+::before,
+::file-selector-button {
+	box-sizing: border-box;
+}
+
+*,
+::file-selector-button {
+	padding: 0;
+	font: inherit;
+	line-height: calc(
+		2px +
+		2ex +
+		2px
+	); /* Use accessible and smarter line heights */
+	color: currentColor;
+	border: none;
+
+	&:not(dialog) {
+		margin: 0;
+	}
+}
+
+html {
+	tab-size: 4; /* Use a more readable tab size */
+	color-scheme: light dark;
+}
+
+#root {
+	min-block-size: 100svb;
+	isolation: isolate; /* Fix z-index issues | https://www.joshwcomeau.com/css/stacking-contexts/ */
+}
+
+/* || FORMS */
+
+::file-selector-button,
+button,
+input:is([type='checkbox'], [type='radio']),
+label,
+select {
+	cursor: pointer;
+}
+
+::file-selector-button,
+button,
+input,
+select,
+textarea {
+	background-color: transparent;
+}
+
+@supports (appearance: base-select) {
+	select {
+		appearance: base-select;
+	}
+}
+
+/* || MEDIA */
+
+audio,
+canvas,
+iframe,
+img,
+picture,
+svg,
+video {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+img {
+	font-style: italic; /* Distinguish alt text from normal content */
+}
+
+/* || TYPOGRAPHY */
+
+a {
+	text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	overflow-wrap: break-word;
+}
+
+ol,
+ul {
+	list-style-type: ''; /* Remove markers without affecting semantics in Safari */
+}
+
+@supports (text-wrap: balance) and (text-wrap: pretty) {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		text-wrap: balance;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+}

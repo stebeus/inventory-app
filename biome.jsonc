@@ -1,0 +1,143 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"includes": ["**", "!**/*.ejs"]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"complexity": {
+				"noExcessiveCognitiveComplexity": "error",
+				"noForEach": "error",
+				"noImplicitCoercions": "error",
+				"noUselessStringConcat": "error",
+				"useMaxParams": "error",
+				"useSimplifiedLogicExpression": "error",
+				"useWhile": "error"
+			},
+			"correctness": {
+				"noGlobalDirnameFilename": "error",
+				"noProcessGlobal": "error",
+				"useImportExtensions": "error",
+				"useJsonImportAttributes": "error"
+			},
+			"nursery": {
+				// JavaScript
+				"noForIn": "error",
+				"useDestructuring": "error",
+				"useDomQuerySelector": "error",
+				"useDomNodeTextContent": "error",
+				"useErrorCause": "error",
+				"useImportsFirst": "error",
+				"useNullishCoalescing": "error",
+
+				// CSS
+				"noExcessiveSelectorClasses": {
+					"level": "error",
+					"options": {
+						"maxClasses": 1
+					}
+				},
+				"noHexColors": "error",
+				"useBaseline": "error"
+			},
+			"style": {
+				"noCommonJs": "error",
+				"noDefaultExport": "error",
+				"noNegationElse": "error",
+				"noNestedTernary": "error",
+				"noParameterAssign": "error",
+				"noProcessEnv": "error",
+				"noRestrictedImports": {
+					"level": "error",
+					"options": {
+						"patterns": [
+							{
+								"group": "../**/*",
+								"message": "Avoid relative parent imports. Use `#root/` absolute paths instead."
+							}
+						]
+					}
+				},
+				"noUselessElse": "error",
+				"noYodaExpression": "error",
+				"useCollapsedIf": "error",
+				"useConsistentArrowReturn": "error",
+				"useConsistentObjectDefinitions": "error",
+				"useExportsLast": "error",
+				"useFilenamingConvention": {
+					"level": "error",
+					"options": {
+						"filenameCases": ["kebab-case"]
+					}
+				},
+				"useForOf": "error",
+				"useImportType": "error",
+				"useNamingConvention": "error",
+				"useNodeAssertStrict": "error",
+				"useNumericSeparators": "error",
+				"useObjectSpread": "error",
+				"useShorthandAssign": "error",
+				"useThrowNewError": "error"
+			},
+			"suspicious": {
+				"noBitwiseOperators": "error",
+				"noVar": "error",
+				"useAwait": "error",
+				"useGuardForIn": "error"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single"
+		}
+	},
+	"css": {
+		"formatter": {
+			"quoteStyle": "single"
+		}
+	},
+	"html": {
+		"formatter": {
+			"enabled": true
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"noDuplicateClasses": "on",
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							{
+								"type": true
+							},
+							":NODE:",
+							":BLANK_LINE:",
+							[":PACKAGE_WITH_PROTOCOL:", ":PACKAGE:"],
+							":BLANK_LINE:",
+							":ALIAS:",
+							":BLANK_LINE:",
+							":PATH:"
+						]
+					}
+				},
+				"useSortedProperties": "on"
+			}
+		}
+	}
+}
