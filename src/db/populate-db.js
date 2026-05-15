@@ -10,7 +10,12 @@ const populateDb = async () => {
 
 	const client = new Client({ connectionString: DB_URL });
 
-	const sql = createTable();
+	const sql = createTable(
+		'categories',
+		'name VARCHAR (25) NOT NULL',
+		'img_url TEXT NOT NULL',
+		'timestamp TIMESTAMPTZ DEFAULT NOW()',
+	);
 
 	await client.connect();
 	await client.query(sql);
