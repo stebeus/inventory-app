@@ -28,4 +28,21 @@ const selectItem = async (categoryId, itemId) => {
 	return item;
 };
 
-export { selectAllCategories, selectAllItems, selectCategoryName, selectItem };
+const selectItemCount = async (categoryId) => {
+	const [{ item_count }] = await queryDb(
+		select,
+		'COUNT(*) AS item_count',
+		`"${categoryId}"`,
+		'INNER JOIN categories ON categories.id = category_id GROUP BY category_id',
+	);
+
+	return item_count;
+};
+
+export {
+	selectAllCategories,
+	selectAllItems,
+	selectCategoryName,
+	selectItem,
+	selectItemCount,
+};
