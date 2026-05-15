@@ -17,4 +17,15 @@ const selectCategoryName = async (categoryId) => {
 	return name;
 };
 
-export { selectAllCategories, selectAllItems, selectCategoryName };
+const selectItem = async (categoryId, itemId) => {
+	const [item] = await queryDb(
+		select,
+		'*',
+		`"${categoryId}"`,
+		`id = ${itemId}`,
+	);
+
+	return item;
+};
+
+export { selectAllCategories, selectAllItems, selectCategoryName, selectItem };
