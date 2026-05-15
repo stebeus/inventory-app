@@ -20,7 +20,7 @@ const insert = (table, columns, values) => {
 	const stringifiedValues = values.map(parseArray).toString();
 
 	return `
-    INSERT INTO ${table} ${stringifiedColumns}
+    INSERT INTO ${table} (${stringifiedColumns})
     VALUES ${stringifiedValues}
   `;
 };
