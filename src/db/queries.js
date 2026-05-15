@@ -4,7 +4,7 @@ const selectAllCategories = async () =>
 	await queryDb(select, '*', 'categories');
 
 const selectAllItems = async (categoryId) =>
-	await queryDb(select, '*', `"${categoryId}"`);
+	await queryDb(select, '*', 'items', `WHERE category_id = ${categoryId}`);
 
 const selectCategory = async (categoryId) => {
 	const [category] = await queryDb(
@@ -17,14 +17,8 @@ const selectCategory = async (categoryId) => {
 	return category;
 };
 
-const selectItem = async (categoryId, itemId) => {
-	const [item] = await queryDb(
-		select,
-		'*',
-		`"${categoryId}"`,
-		`WHERE id = ${itemId}`,
-	);
-
+const selectItem = async (itemId) => {
+	const [item] = await queryDb(select, '*', 'items', `WHERE id = ${itemId}`);
 	return item;
 };
 
@@ -32,8 +26,12 @@ const selectItemCount = async (categoryId) => {
 	const [{ item_count }] = await queryDb(
 		select,
 		'COUNT(*) AS item_count',
-		`"${categoryId}"`,
-		'INNER JOIN categories ON categories.id = category_id GROUP BY category_id',
+		'items',
+		`
+			INNER JOIN categories
+			ON categories.id = ${categoryId}
+			GROUP BY category_id
+		`,
 	);
 
 	return item_count;
