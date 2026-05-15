@@ -3,6 +3,7 @@ import {
 	selectCategory,
 	selectItemCount,
 } from '#root/db/queries.js';
+import { toKebabCase } from '#root/utils/formatters.js';
 
 const getManageCategories = async (req, res) => {
 	const {
@@ -18,6 +19,7 @@ const getManageCategories = async (req, res) => {
 		categories,
 		category,
 		itemCount,
+		toKebabCase,
 	});
 };
 
