@@ -1,15 +1,17 @@
 import { pool } from '#root/db/pool.js';
 
-const createTable = (name, ...columns) => {
+const createTable = ([name, ...columns]) => {
 	const stringifiedColumns = columns.toString();
 
 	return `
     CREATE TABLE IF NOT EXISTS ${name} (
       id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
       ${stringifiedColumns}
-    );
+    )
   `;
 };
+
+const createTables = (...tables) => tables.map(createTable).join(';');
 
 const dropTable = (name) => `DROP TABLE IF EXISTS ${name}`;
 
@@ -47,4 +49,4 @@ const queryDb = async (command, ...params) => {
 	return isSelect ? query.rows : query;
 };
 
-export { createTable, del, dropTable, insert, queryDb, select, update };
+export { createTables, del, dropTable, insert, queryDb, select, update };
