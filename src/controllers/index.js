@@ -1,7 +1,7 @@
 import {
 	selectAllCategories,
 	selectAllItems,
-	selectCategoryName,
+	selectCategory,
 } from '#root/db/queries.js';
 
 const getIndex = async (req, res) => {
@@ -9,11 +9,11 @@ const getIndex = async (req, res) => {
 		params: { categoryId },
 	} = req;
 
-	const title = await selectCategoryName(categoryId);
+	const { name } = await selectCategory(categoryId);
 	const categories = await selectAllCategories();
 	const items = await selectAllItems(categoryId);
 
-	res.render('index', { title, categories, items });
+	res.render('index', { title: name, categories, items });
 };
 
 export { getIndex };

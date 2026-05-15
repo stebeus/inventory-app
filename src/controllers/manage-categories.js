@@ -1,6 +1,6 @@
 import {
 	selectAllCategories,
-	selectCategoryName,
+	selectCategory,
 	selectItemCount,
 } from '#root/db/queries.js';
 
@@ -9,11 +9,16 @@ const getManageCategories = async (req, res) => {
 		params: { categoryId },
 	} = req;
 
-	const title = await selectCategoryName(categoryId);
+	const category = await selectCategory(categoryId);
 	const categories = await selectAllCategories();
 	const itemCount = await selectItemCount(categoryId);
 
-	res.render('manage-categories', { title, categories, itemCount });
+	res.render('manage-categories', {
+		title: category.name,
+		categories,
+		category,
+		itemCount,
+	});
 };
 
 export { getManageCategories };

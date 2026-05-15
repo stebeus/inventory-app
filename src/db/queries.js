@@ -6,15 +6,15 @@ const selectAllCategories = async () =>
 const selectAllItems = async (categoryId) =>
 	await queryDb(select, '*', `"${categoryId}"`);
 
-const selectCategoryName = async (categoryId) => {
-	const [{ name }] = await queryDb(
+const selectCategory = async (categoryId) => {
+	const [category] = await queryDb(
 		select,
-		'name',
+		'*',
 		'categories',
 		`WHERE id = ${categoryId}`,
 	);
 
-	return name;
+	return category;
 };
 
 const selectItem = async (categoryId, itemId) => {
@@ -42,7 +42,7 @@ const selectItemCount = async (categoryId) => {
 export {
 	selectAllCategories,
 	selectAllItems,
-	selectCategoryName,
+	selectCategory,
 	selectItem,
 	selectItemCount,
 };
