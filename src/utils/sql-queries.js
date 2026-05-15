@@ -25,10 +25,9 @@ const insert = (table, columns, values) => {
   `;
 };
 
-const select = (columns, table, condition) => {
+const select = (columns, table, clause) => {
 	const stringifiedColumns = columns.toString();
-	const hasCondition = condition == null ? '' : ` WHERE ${condition}`;
-	return `SELECT ${stringifiedColumns} FROM ${table}${hasCondition}`;
+	return `SELECT ${stringifiedColumns} FROM ${table} ${clause}`;
 };
 
 const update = (table, condition, ...columns) => {

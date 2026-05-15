@@ -11,7 +11,7 @@ const selectCategoryName = async (categoryId) => {
 		select,
 		'name',
 		'categories',
-		`id = ${categoryId}`,
+		`WHERE id = ${categoryId}`,
 	);
 
 	return name;
@@ -22,7 +22,7 @@ const selectItem = async (categoryId, itemId) => {
 		select,
 		'*',
 		`"${categoryId}"`,
-		`id = ${itemId}`,
+		`WHERE id = ${itemId}`,
 	);
 
 	return item;
