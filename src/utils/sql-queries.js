@@ -1,6 +1,6 @@
 import { pool } from '#root/db/pool.js';
 
-const createTable = ([name, ...columns]) => {
+const createTable = (name, ...columns) => {
 	const stringifiedColumns = columns.toString();
 
 	return `
@@ -11,9 +11,13 @@ const createTable = ([name, ...columns]) => {
   `;
 };
 
-const createTables = (...tables) => tables.map(createTable).join(';');
+const createTables = (...tables) =>
+	tables.map((name, ...columns) => createTable(name, ...columns)).join(';');
 
 const dropTable = (name) => `DROP TABLE IF EXISTS ${name}`;
+
+const referenceForeignKey = (childTable, parentTable) =>
+	`${childTable}_id INT REFERENCES ${parentTable} (id)`;
 
 const insert = (table, columns, values) => {
 	const parseArray = (array) => `(${array})`;
@@ -49,4 +53,14 @@ const queryDb = async (command, ...params) => {
 	return isSelect ? query.rows : query;
 };
 
-export { createTables, del, dropTable, insert, queryDb, select, update };
+export {
+	createTable,
+	createTables,
+	del,
+	dropTable,
+	insert,
+	queryDb,
+	referenceForeignKey,
+	select,
+	update,
+};
