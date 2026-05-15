@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+	<%- include('partials/metadata', { title }) %>
+	<body>
+		<div id="root">
+			<%- include('partials/navbar', { title }) %>
+			<main>
+				<ul class="tabs">
+					<% for (const { id, name, img_url } of categories) { %>
+					<li class="tab">
+						<%- include('partials/img-link', { href: `/categories/${id}/`, name,
+						img_url }) %>
+					</li>
+					<% } %>
+				</ul>
+				<img src="<%= category.img_url %>" alt="" width="128" height="128" />
+				<h2><%= category.name %></h2>
+				<p>Item quantity: <%= itemCount %></p>
+			</main>
+			<%- include('partials/footer', { title }) %>
+		</div>
+	</body>
+</html>
