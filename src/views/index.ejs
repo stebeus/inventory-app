@@ -2,6 +2,9 @@
 <html lang="en">
 	<%- include('partials/metadata', { title }) %>
 	<body>
-		<div id="root"></div>
+		<div id="root">
+			<%- include('partials/navbar', { title }) %> <%-
+			include('partials/footer', { title }) %>
+		</div>
 	</body>
 </html>
