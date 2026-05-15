@@ -32,7 +32,8 @@ const select = (columns, table, condition) => {
 };
 
 const update = (table, condition, ...columns) => {
-	const stringifiedColumns = columns.toString();
+	const parseArray = ([column, value]) => `${column} = ${value}`;
+	const stringifiedColumns = columns.map(parseArray).toString();
 	return `UPDATE ${table} SET ${stringifiedColumns} WHERE ${condition}`;
 };
 
