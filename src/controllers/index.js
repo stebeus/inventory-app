@@ -9,9 +9,9 @@ const getIndex = async (req, res) => {
 		params: { categoryId },
 	} = req;
 
+	const title = await selectCategoryName(categoryId);
 	const categories = await selectAllCategories();
 	const items = await selectAllItems(categoryId);
-	const title = await selectCategoryName(categoryId);
 
 	res.render('index', { title, categories, items });
 };
