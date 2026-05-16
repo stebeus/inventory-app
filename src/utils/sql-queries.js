@@ -19,7 +19,7 @@ const dropTable = (name) => `DROP TABLE IF EXISTS ${name}`;
 const referenceForeignKey = (childTable, parentTable) =>
 	`${childTable}_id INT REFERENCES ${parentTable} (id)`;
 
-const insert = (table, columns, values) => {
+const insert = (table, columns, ...values) => {
 	const parseArray = (array) => `(${array})`;
 
 	const stringifiedColumns = columns.toString();
