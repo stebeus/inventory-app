@@ -37,10 +37,14 @@ const selectItemCount = async (categoryId) => {
 	return item_count;
 };
 
+const selectItemsByName = async (name) =>
+	await queryDb(select, 'name', 'items', `WHERE name ILIKE '%${name}%'`);
+
 export {
 	selectAllCategories,
 	selectAllItems,
 	selectCategory,
 	selectItem,
 	selectItemCount,
+	selectItemsByName,
 };
