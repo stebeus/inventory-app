@@ -1,16 +1,18 @@
 import { queryDb, select } from '#root/utils/sql-queries.js';
 
-const selectAllCategories = async () =>
-	await queryDb(select, '*', 'categories');
+const CATEGORIES = 'categories';
+const ITEMS = 'items';
+
+const selectAllCategories = async () => await queryDb(select, '*', CATEGORIES);
 
 const selectAllItems = async (categoryId) =>
-	await queryDb(select, '*', 'items', `WHERE category_id = ${categoryId}`);
+	await queryDb(select, '*', ITEMS, `WHERE category_id = ${categoryId}`);
 
 const selectCategory = async (categoryId) => {
 	const [category] = await queryDb(
 		select,
 		'*',
-		'categories',
+		CATEGORIES,
 		`WHERE id = ${categoryId}`,
 	);
 
@@ -18,7 +20,7 @@ const selectCategory = async (categoryId) => {
 };
 
 const selectItem = async (itemId) => {
-	const [item] = await queryDb(select, '*', 'items', `WHERE id = ${itemId}`);
+	const [item] = await queryDb(select, '*', ITEMS, `WHERE id = ${itemId}`);
 	return item;
 };
 
@@ -26,7 +28,7 @@ const selectItemCount = async (categoryId) => {
 	const [{ item_count }] = await queryDb(
 		select,
 		'COUNT(*) AS item_count',
-		'items',
+		ITEMS,
 		`
 			INNER JOIN categories
 			ON categories.id = ${categoryId}
@@ -38,7 +40,7 @@ const selectItemCount = async (categoryId) => {
 };
 
 const selectItemsByName = async (name) =>
-	await queryDb(select, 'name', 'items', `WHERE name ILIKE '%${name}%'`);
+	await queryDb(select, 'name', ITEMS, `WHERE name ILIKE '%${name}%'`);
 
 export {
 	selectAllCategories,
