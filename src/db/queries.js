@@ -8,6 +8,9 @@ const selectAllCategories = async () => await queryDb(select, '*', CATEGORIES);
 const selectAllItems = async (categoryId) =>
 	await queryDb(select, '*', ITEMS, `WHERE category_id = ${categoryId}`);
 
+const selectAllItemsByName = async (name) =>
+	await queryDb(select, '*', ITEMS, `WHERE name ILIKE '%${name}%'`);
+
 const selectCategory = async (categoryId) => {
 	const [category] = await queryDb(
 		select,
@@ -39,14 +42,11 @@ const selectItemCount = async (categoryId) => {
 	return item_count;
 };
 
-const selectItemsByName = async (name) =>
-	await queryDb(select, 'name', ITEMS, `WHERE name ILIKE '%${name}%'`);
-
 export {
 	selectAllCategories,
 	selectAllItems,
+	selectAllItemsByName,
 	selectCategory,
 	selectItem,
 	selectItemCount,
-	selectItemsByName,
 };
