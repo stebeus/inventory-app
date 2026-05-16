@@ -6,6 +6,7 @@ import { handleError, handleNotFoundError } from './controllers/error.js';
 import { index } from './routers/index.js';
 import { item } from './routers/item.js';
 import { manageCategories } from './routers/manage-categories.js';
+import { search } from './routers/search.js';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(index);
 app.use(item);
 app.use(manageCategories);
+app.use(search);
 
 app.use(handleNotFoundError);
 app.use(handleError);
