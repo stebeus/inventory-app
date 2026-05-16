@@ -1,7 +1,24 @@
 import { equal } from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
-import { toKebabCase } from './formatters.js';
+import { toCamelCase, toKebabCase } from './formatters.js';
+
+describe('toCamelCase', () => {
+	it('parses inputs to strings', () => {
+		const string = toCamelCase(null);
+		equal(string, 'null');
+	});
+
+	it('removes non-alphanumeric characters', () => {
+		const string = toCamelCase('Hello, world!');
+		equal(string, 'helloWorld');
+	});
+
+	it('camel cases strings', () => {
+		const string = toCamelCase('John Do_e-123 ');
+		equal(string, 'johnDoe123');
+	});
+});
 
 describe('toKebabCase', () => {
 	it('parses inputs to strings', () => {
