@@ -8,8 +8,8 @@
 				<ul class="tabs">
 					<% for (const { id, name, img_url } of categories) { %>
 					<li class="tab">
-						<%- include('partials/img-link', { href: `/categories/${id}/`, name,
-						img_url }) %>
+						<%- include('partials/img-link', { href: `/manage-categories/${id}`,
+						name, img_url }) %>
 					</li>
 					<% } %>
 				</ul>
