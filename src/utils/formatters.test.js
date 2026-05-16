@@ -5,34 +5,28 @@ import { toCamelCase, toKebabCase } from './formatters.js';
 
 describe('toCamelCase', () => {
 	it('parses inputs to strings', () => {
-		const string = toCamelCase(null);
-		equal(string, 'null');
+		equal(toCamelCase(null), 'null');
 	});
 
 	it('removes non-alphanumeric characters', () => {
-		const string = toCamelCase('Hello, world!');
-		equal(string, 'helloWorld');
+		equal(toCamelCase('Hello, world!'), 'helloWorld');
 	});
 
 	it('camel cases strings', () => {
-		const string = toCamelCase('John Do_e-123 ');
-		equal(string, 'johnDoe123');
+		equal(toCamelCase('John Do_e-123 '), 'johnDoe123');
 	});
 });
 
 describe('toKebabCase', () => {
 	it('parses inputs to strings', () => {
-		const string = toKebabCase(null);
-		equal(string, 'null');
+		equal(toKebabCase(null), 'null');
 	});
 
 	it('removes non-alphanumeric characters', () => {
-		const string = toKebabCase('Hello, world!');
-		equal(string, 'hello-world');
+		equal(toKebabCase('Hello, world!'), 'hello-world');
 	});
 
 	it('kebab cases strings', () => {
-		const string = toKebabCase('John Do_e-123 ');
-		equal(string, 'john-doe-123');
+		equal(toKebabCase('John Do_e-123 '), 'john-doe-123');
 	});
 });
