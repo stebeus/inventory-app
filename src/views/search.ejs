@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+	<%- include('partials/metadata', { title }) %>
+	<body>
+		<div id="root">
+			<%- include('partials/navbar', { title }) %>
+			<main>
+				<ul class="tabs">
+					<% for (const { id, name, img_url } of categories) { %>
+					<li class="tab">
+						<%- include('partials/img-link', { href: `/categories/${id}/`, name,
+						img_url }) %>
+					</li>
+					<% } %>
+				</ul>
+
+				<form class="search" action="/search" method="get">
+					<label>
+						Search items:
+						<input type="search" name="q" />
+					</label>
+				</form>
+
+				<ul class="items">
+					<% for (const { id, category_id, name, img_url } of items) { %>
+					<li class="item">
+						<%- include('partials/img-link', { href:
+						`/categories/${category_id}/item/${id}`, name, img_url }) %>
+					</li>
+					<% } %>
+				</ul>
+			</main>
+			<%- include('partials/footer', { title }) %>
+		</div>
+	</body>
+</html>
