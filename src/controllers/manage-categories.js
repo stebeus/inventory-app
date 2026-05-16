@@ -10,6 +10,8 @@ const getManageCategories = async (req, res) => {
 		params: { categoryId },
 	} = req;
 
+	if (categoryId == null) res.redirect('/manage-categories/1/');
+
 	const category = await selectCategory(categoryId);
 	const categories = await selectAllCategories();
 	const itemCount = await selectItemCount(categoryId);

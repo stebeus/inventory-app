@@ -10,6 +10,8 @@ const getIndex = async (req, res) => {
 		params: { categoryId },
 	} = req;
 
+	if (categoryId == null) res.redirect('/categories/1/');
+
 	const { name } = await selectCategory(categoryId);
 	const categories = await selectAllCategories();
 	const items = await selectAllItems(categoryId);
