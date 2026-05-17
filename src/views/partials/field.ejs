@@ -1,0 +1,12 @@
+<label class="field">
+	<span class="label"><%= label %>: </span>
+	<input
+		type="<%= type %>"
+		name="<%= camelCase(label) %>"
+		placeholder="<%= placeholder %>"
+		minlength="1"
+		maxlength="<%= maxlength %>"
+		required
+		autocomplete="on"
+	/>
+</label>
