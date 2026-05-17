@@ -1,5 +1,6 @@
+import { kebabCase } from 'change-case';
+
 import { selectAllCategories, selectAllItemsByName } from '#root/db/queries.js';
-import { toKebabCase } from '#root/utils/formatters.js';
 
 const getSearch = async (req, res) => {
 	const {
@@ -9,7 +10,7 @@ const getSearch = async (req, res) => {
 	const categories = await selectAllCategories();
 	const items = await selectAllItemsByName(q);
 
-	res.render('search', { title: 'Search', categories, items, toKebabCase });
+	res.render('search', { title: 'Search', categories, items, kebabCase });
 };
 
 export { getSearch };

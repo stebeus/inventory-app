@@ -1,5 +1,5 @@
 <svg class="svg-icon" width="24" height="24">
 	<!-- prettier-ignore -->
 	<title><%= title %></title>
-	<use href="/icons.svg#<%= toKebabCase(title) %>-icon" />
+	<use href="/icons.svg#<%= kebabCase(title.toLowerCase()) %>-icon" />
 </svg>

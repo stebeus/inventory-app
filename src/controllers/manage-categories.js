@@ -1,9 +1,10 @@
+import { camelCase, kebabCase } from 'change-case';
+
 import {
 	selectAllCategories,
 	selectCategory,
 	selectItemCount,
 } from '#root/db/queries.js';
-import { toCamelCase, toKebabCase } from '#root/utils/formatters.js';
 
 const getManageCategories = async (req, res) => {
 	const {
@@ -21,8 +22,8 @@ const getManageCategories = async (req, res) => {
 		categories,
 		category,
 		itemCount,
-		toCamelCase,
-		toKebabCase,
+		camelCase,
+		kebabCase,
 	});
 };
 

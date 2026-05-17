@@ -1,9 +1,10 @@
+import { kebabCase } from 'change-case';
+
 import {
 	selectAllCategories,
 	selectAllItems,
 	selectCategory,
 } from '#root/db/queries.js';
-import { toKebabCase } from '#root/utils/formatters.js';
 
 const getIndex = async (req, res) => {
 	const {
@@ -16,7 +17,7 @@ const getIndex = async (req, res) => {
 	const categories = await selectAllCategories();
 	const items = await selectAllItems(categoryId);
 
-	res.render('index', { title: name, categories, items, toKebabCase });
+	res.render('index', { title: name, categories, items, kebabCase });
 };
 
 export { getIndex };

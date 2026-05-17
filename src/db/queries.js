@@ -1,42 +1,49 @@
-import { queryDb, select } from '#root/utils/sql-queries.js';
+import { pool } from './pool.js';
 
-const CATEGORIES = 'categories';
-const ITEMS = 'items';
+const selectAllCategories = async () => {
+	const { rows } = await pool.query('SELECT * FROM CATEGORIES');
+	return rows;
+};
 
-const selectAllCategories = async () => await queryDb(select, '*', CATEGORIES);
+const selectAllItems = async (categoryId) => {
+	const { rows } = await pool.query(
+		'SELECT * FROM items WHERE category_id = $1',
+		[categoryId],
+	);
 
-const selectAllItems = async (categoryId) =>
-	await queryDb(select, '*', ITEMS, `WHERE category_id = ${categoryId}`);
+	return rows;
+};
 
-const selectAllItemsByName = async (name) =>
-	await queryDb(select, '*', ITEMS, `WHERE name ILIKE '%${name}%'`);
+const selectAllItemsByName = async (name) => {
+	const { rows } = await pool.query('SELECT * FROM items WHERE name ILIKE $1', [
+		`%${name}%`,
+	]);
+
+	return rows;
+};
 
 const selectCategory = async (categoryId) => {
-	const [category] = await queryDb(
-		select,
-		'*',
-		CATEGORIES,
-		`WHERE id = ${categoryId}`,
-	);
+	const {
+		rows: [category],
+	} = await pool.query('SELECT * FROM categories WHERE id = $1', [categoryId]);
 
 	return category;
 };
 
 const selectItem = async (itemId) => {
-	const [item] = await queryDb(select, '*', ITEMS, `WHERE id = ${itemId}`);
+	const {
+		rows: [item],
+	} = await pool.query('SELECT * FROM items WHERE id = $1', [itemId]);
+
 	return item;
 };
 
 const selectItemCount = async (categoryId) => {
-	const [{ item_count }] = await queryDb(
-		select,
-		'COUNT(*) AS item_count',
-		ITEMS,
-		`
-			INNER JOIN categories
-			ON categories.id = ${categoryId}
-			GROUP BY category_id
-		`,
+	const {
+		rows: [{ item_count }],
+	} = await pool.query(
+		'SELECT COUNT(*) AS item_count FROM items WHERE category_id = $1',
+		[categoryId],
 	);
 
 	return item_count;
