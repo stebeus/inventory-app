@@ -1,5 +1,11 @@
 import { pool } from './pool.js';
 
+const insertCategory = async (name, imgUrl) =>
+	await pool.query(
+		'INSERT INTO categories (name, img_url) VALUES ($1, $2) RETURNING *',
+		[name, imgUrl],
+	);
+
 const selectAllCategories = async () => {
 	const { rows } = await pool.query('SELECT * FROM CATEGORIES');
 	return rows;
@@ -50,6 +56,7 @@ const selectItemCount = async (categoryId) => {
 };
 
 export {
+	insertCategory,
 	selectAllCategories,
 	selectAllItems,
 	selectAllItemsByName,
