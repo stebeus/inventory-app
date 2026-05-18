@@ -3,13 +3,14 @@
 	<%- include('partials/metadata', { title }) %>
 	<body>
 		<div id="root">
-			<%- include('partials/navbar', { title }) %>
+			<%- include('partials/navbar') %>
 			<main>
-				<img src="<%= item.img_url %>" alt="" width="128" height="128" />
-				<h2><%= item.name %></h2>
-				<p><%= item.description %></p>
+				<img src="<%= locals.item.img_url %>" alt="" width="128" height="128" />
+				<h2><%= locals.item.name %></h2>
+				<p><%= locals.item.description %></p>
+				<a href="/edit-item/<%= locals.item.id %>">Edit item</a>
 			</main>
-			<%- include('partials/footer', { title }) %>
+			<%- include('partials/footer') %>
 		</div>
 	</body>
 </html>

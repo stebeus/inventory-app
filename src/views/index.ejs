@@ -3,22 +3,22 @@
 	<%- include('partials/metadata', { title }) %>
 	<body>
 		<div id="root">
-			<%- include('partials/navbar', { title }) %>
+			<%- include('partials/navbar') %>
 			<main>
-				<%- include('partials/tabs', { categories }) %>
+				<%- include('partials/tabs', { route: 'categories', categories }) %>
 
-				<%- include('partials/search-bar') %>
+				<%- include('partials/forms/search') %>
 
 				<div class="grid">
-					<% for (const { id, name, img_url } of items) { %>
+					<% for (const { id, name, img_url } of locals.items) { %>
 					<div class="cell">
-						<%- include('partials/img-link', { href: `item/${id}`, name, img_url
-						}) %>
+						<%- include('partials/img-link', { href: `item/${id}/`, name,
+						img_url }) %>
 					</div>
 					<% } %>
 				</div>
 			</main>
-			<%- include('partials/footer', { title }) %>
+			<%- include('partials/footer') %>
 		</div>
 	</body>
 </html>

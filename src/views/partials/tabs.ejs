@@ -1,7 +1,8 @@
 <ul class="tabs">
-	<% for (const { id, name, img_url } of categories) { %>
+	<% for (const { id, name, img_url } of locals.categories) { %>
 	<li class="tab">
-		<%- include('img-link', { href: `/categories/${id}/`, name, img_url }) %>
+		<%- include('img-link', { href: `/${locals.route}/${id}/`, name, img_url })
+		%>
 	</li>
 	<% } %>
 </ul>

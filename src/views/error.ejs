@@ -3,11 +3,11 @@
 	<%- include('partials/metadata', { title }) %>
 	<body>
 		<div id="root">
-			<h1><%= error.status ?? 500 %></h1>
-			<p><%= error.message %></p>
+			<h1><%= locals.error.status ?? 500 %></h1>
+			<p><%= locals.error.message %></p>
 			<a href="/">Go back</a>
-			<% if (nodeEnv !== 'production') { %>
-			<pre><%= error.stack %></pre>
+			<% if (locals.nodeEnv !== 'production') { %>
+			<pre><%= locals.error.stack %></pre>
 			<% } %>
 		</div>
 	</body>

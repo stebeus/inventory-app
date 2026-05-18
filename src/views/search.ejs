@@ -3,22 +3,22 @@
 	<%- include('partials/metadata', { title }) %>
 	<body>
 		<div id="root">
-			<%- include('partials/navbar', { title }) %>
+			<%- include('partials/navbar') %>
 			<main>
-				<%- include('partials/tabs', { categories }) %>
+				<%- include('partials/tabs', { route: 'categories', categories }) %>
 
-				<%- include('partials/search-bar') %>
+				<%- include('partials/forms/search') %>
 
 				<ul class="items">
-					<% for (const { id, category_id, name, img_url } of items) { %>
+					<% for (const { id, category_id, name, img_url } of locals.items) { %>
 					<li class="item">
 						<%- include('partials/img-link', { href:
-						`/categories/${category_id}/item/${id}`, name, img_url }) %>
+						`/categories/${category_id}/item/${id}/`, name, img_url }) %>
 					</li>
 					<% } %>
 				</ul>
 			</main>
-			<%- include('partials/footer', { title }) %>
+			<%- include('partials/footer') %>
 		</div>
 	</body>
 </html>

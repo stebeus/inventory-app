@@ -3,21 +3,34 @@
 	<%- include('partials/metadata', { title }) %>
 	<body>
 		<div id="root">
-			<%- include('partials/navbar', { title }) %>
+			<%- include('partials/navbar') %>
 			<main>
-				<ul class="tabs">
-					<% for (const { id, name, img_url } of categories) { %>
-					<li class="tab">
-						<%- include('partials/img-link', { href: `/manage-categories/${id}`,
-						name, img_url }) %>
-					</li>
-					<% } %>
-				</ul>
-				<img src="<%= category.img_url %>" alt="" width="128" height="128" />
-				<h2><%= category.name %></h2>
-				<p>Item quantity: <%= itemCount %></p>
+				<a href="/create-category">Create category</a>
+
+				<%- include('partials/tabs', { route: 'manage-categories', categories }) %>
+
+				<section class="category">
+					<img
+						src="<%= locals.category.img_url %>"
+						alt=""
+						width="128"
+						height="128"
+					/>
+					<h3><%= locals.category.name %></h3>
+					<p>Item quantity: <%= locals.itemCount %></p>
+					<ul class="actions">
+						<li>
+							<a href="/create-item/<%= locals.category.id %>">Create item</a>
+						</li>
+						<li>
+							<a href="/edit-category/<%= locals.category.id %>">
+								Edit category
+							</a>
+						</li>
+					</ul>
+				</section>
 			</main>
-			<%- include('partials/footer', { title }) %>
+			<%- include('partials/footer') %>
 		</div>
 	</body>
 </html>
