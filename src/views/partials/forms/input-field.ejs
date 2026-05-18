@@ -1,0 +1,11 @@
+<label class="field">
+	<span class="label"><%= locals.label %></span>
+	<input
+		type="<%= locals.type %>"
+		name="<%= camelCase(locals.label) %>"
+		placeholder="<%= locals.placeholder %>"
+		value="<%= locals.value %>"
+		required
+		autocomplete="on"
+	/>
+</label>
