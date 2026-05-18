@@ -9,6 +9,12 @@
 				<h2><%= locals.item.name %></h2>
 				<p><%= locals.item.description %></p>
 				<a href="/edit-item/<%= locals.item.id %>">Edit item</a>
+				<form
+					action="/delete-item/<%= locals.item.category_id %>/<%= locals.item.id %>"
+					method="post"
+				>
+					<button type="submit">Delete item</button>
+				</form>
 			</main>
 			<%- include('partials/footer') %>
 		</div>

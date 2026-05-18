@@ -1,6 +1,7 @@
 import { kebabCase } from 'change-case';
 
 import {
+	deleteCategory,
 	selectAllCategories,
 	selectCategory,
 	selectItemCount,
@@ -26,4 +27,14 @@ const getManageCategories = async (req, res) => {
 	});
 };
 
-export { getManageCategories };
+const postDeleteCategory = async (req, res) => {
+	const {
+		params: { categoryId },
+	} = req;
+
+	await deleteCategory(categoryId);
+
+	res.redirect('/manage-categories/');
+};
+
+export { getManageCategories, postDeleteCategory };

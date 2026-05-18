@@ -1,6 +1,6 @@
 import { kebabCase } from 'change-case';
 
-import { selectItem } from '#root/db/queries.js';
+import { deleteItem, selectItem } from '#root/db/queries.js';
 
 const getItem = async (req, res) => {
 	const {
@@ -12,4 +12,14 @@ const getItem = async (req, res) => {
 	res.render('item', { title: item.name, item, kebabCase });
 };
 
-export { getItem };
+const postDeleteItem = async (req, res) => {
+	const {
+		params: { categoryId, itemId },
+	} = req;
+
+	await deleteItem(itemId);
+
+	res.redirect(`/categories/${categoryId}`);
+};
+
+export { getItem, postDeleteItem };

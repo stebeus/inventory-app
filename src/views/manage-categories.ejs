@@ -27,6 +27,16 @@
 								Edit category
 							</a>
 						</li>
+						<% if (locals.category.id !== 1) { %>
+						<li>
+							<form
+								action="/delete-category/<%= locals.category.id %>"
+								method="post"
+							>
+								<button type="submit">Delete category</button>
+							</form>
+						</li>
+						<% } %>
 					</ul>
 				</section>
 			</main>
