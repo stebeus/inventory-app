@@ -67,7 +67,7 @@ const selectItemCount = async (categoryId) => {
 
 const updateCategory = async (name, imgUrl, id) =>
 	await pool.query(
-		`UPDATE categories SET name = $1 img_url = $2 WHERE id = $3`,
+		`UPDATE categories SET name = $1, img_url = $2 WHERE id = $3`,
 		[name, imgUrl, id],
 	);
 
