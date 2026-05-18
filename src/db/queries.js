@@ -38,10 +38,10 @@ const selectAllItemsByName = async (name) => {
 	return rows;
 };
 
-const selectCategory = async (categoryId) => {
+const selectCategory = async (id) => {
 	const {
 		rows: [category],
-	} = await pool.query('SELECT * FROM categories WHERE id = $1', [categoryId]);
+	} = await pool.query('SELECT * FROM categories WHERE id = $1', [id]);
 
 	return category;
 };
