@@ -71,6 +71,12 @@ const updateCategory = async (name, imgUrl, id) =>
 		[name, imgUrl, id],
 	);
 
+const updateItem = async (name, imgUrl, description, id) =>
+	await pool.query(
+		`UPDATE items SET name = $1, img_url = $2, description = $3 WHERE id = $4`,
+		[name, imgUrl, description, id],
+	);
+
 export {
 	insertCategory,
 	insertItem,
@@ -81,4 +87,5 @@ export {
 	selectItem,
 	selectItemCount,
 	updateCategory,
+	updateItem,
 };
