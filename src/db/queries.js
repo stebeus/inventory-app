@@ -6,6 +6,16 @@ const insertCategory = async (name, imgUrl) =>
 		[name, imgUrl],
 	);
 
+const insertItem = async (categoryId, name, imgUrl, description) =>
+	await pool.query(
+		`
+		INSERT INTO items (category_id, name, img_url, description)
+		VALUES ($1, $2, $3, $4)
+		RETURNING *
+		`,
+		[categoryId, name, imgUrl, description],
+	);
+
 const selectAllCategories = async () => {
 	const { rows } = await pool.query('SELECT * FROM CATEGORIES');
 	return rows;
@@ -57,6 +67,7 @@ const selectItemCount = async (categoryId) => {
 
 export {
 	insertCategory,
+	insertItem,
 	selectAllCategories,
 	selectAllItems,
 	selectAllItemsByName,
