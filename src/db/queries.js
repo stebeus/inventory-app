@@ -80,10 +80,9 @@ const updateItem = async (name, imgUrl, description, id) =>
 const deleteCategory = async (id) =>
 	await pool.query(
 		`
-		DELETE FROM items WHERE category_id = $1;
-		DELETE FROM categories WHERE id = $1;
+		DELETE FROM items WHERE category_id = ${id};
+		DELETE FROM categories WHERE id = ${id}
 		`,
-		[id],
 	);
 
 const deleteItem = async (id) =>
