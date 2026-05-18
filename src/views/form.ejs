@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+	<%- include('partials/metadata', { title }) %>
+	<body>
+		<div id="root">
+			<%- include('partials/navbar') %>
+			<main>
+				<fieldset>
+					<legend>
+						<%= locals.title %>
+					</legend>
+
+					<form action="/<%= locals.action %>" method="post">
+						<% if (locals.errors != null) { %>
+						<ul class="errors">
+							<% for (const { msg } of locals.errors ) { %>
+							<li class="error"><%= msg %></li>
+							<% } %>
+						</ul>
+						<% }%>
+
+						<%- include('partials/forms/input-field', {
+							label: 'Name',
+							type: 'text',
+							value: locals.values[0],
+						}) %>
+
+						<%-	include('partials/forms/input-field', {
+							label: 'Image link',
+							type: 'url',
+							value: locals.values[1],
+							placeholder:'https://site.com/image_name.png',
+						}) %>
+
+						<% if (locals.hasDescription) { %>
+						<%-	include('partials/forms/textarea-field', {
+							label: 'Description',
+							value: locals.values[2]
+						}) %>
+						<% } %>
+
+						<button type="submit">Submit</button>
+					</form>
+				</fieldset>
+			</main>
+			<%- include('partials/footer') %>
+		</div>
+	</body>
+</html>
