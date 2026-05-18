@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import express from 'express';
 
 import { handleError, handleNotFoundError } from './controllers/error.js';
+import { form } from './routers/form.js';
 import { index } from './routers/index.js';
 import { item } from './routers/item.js';
 import { manageCategories } from './routers/manage-categories.js';
@@ -20,6 +21,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(index);
+app.use(form);
 app.use(item);
 app.use(manageCategories);
 app.use(search);
