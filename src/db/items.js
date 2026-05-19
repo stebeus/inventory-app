@@ -25,4 +25,22 @@ const getItemCount = async (categoryId) => {
 	return itemCount;
 };
 
-export { createItem, getAllItems, getItem, getItemCount, getItemsByName };
+const updateItem = async (name, description, imgUrl, id) =>
+	await sql`
+    UPDATE items
+    SET
+      name = ${name},
+      description = ${description},
+      img_url = ${imgUrl},
+      updated_at = NOW()
+    WHERE id = ${id}
+  `;
+
+export {
+	createItem,
+	getAllItems,
+	getItem,
+	getItemCount,
+	getItemsByName,
+	updateItem,
+};
