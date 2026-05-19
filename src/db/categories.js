@@ -17,11 +17,10 @@ const updateCategory = async (name, imgUrl, id) =>
     WHERE id = ${id}
   `;
 
-const deleteCategory = async (id) =>
-	await sql`
-    DELETE FROM items WHERE category_id = ${id};
-    DELETE FROM categories WHERE id = ${id}
-  `;
+const deleteCategory = async (id) => {
+	await sql`DELETE FROM items WHERE category_id = ${id};`;
+	await sql`DELETE FROM categories WHERE id = ${id}`;
+};
 
 export {
 	createCategory,
