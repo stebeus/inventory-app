@@ -5,8 +5,10 @@ const createCategory = async (name, imgUrl) =>
 
 const getAllCategories = async () => await sql`SELECT * FROM categories`;
 
-const getCategory = async (id) =>
-	await sql`SELECT * FROM categories WHERE id = ${id}`;
+const getCategory = async (id) => {
+	const [category] = await sql`SELECT * FROM categories WHERE id = ${id}`;
+	return category;
+};
 
 const updateCategory = async (name, imgUrl, id) =>
 	await sql`
