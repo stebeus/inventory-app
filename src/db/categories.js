@@ -12,7 +12,9 @@ const getCategory = async (id) => {
 
 const updateCategory = async (name, imgUrl, id) =>
 	await sql`
-    UPDATE categories SET name = ${name}, img_url = ${imgUrl} WHERE id = ${id}
+    UPDATE categories
+    SET name = ${name}, img_url = ${imgUrl}, updated_at = NOW()
+    WHERE id = ${id}
   `;
 
 const deleteCategory = async (id) =>
