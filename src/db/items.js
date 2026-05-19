@@ -6,4 +6,7 @@ const createItem = async (categoryId, name, description, imgUrl) =>
     VALUES (${categoryId}, ${name}, ${description}, ${imgUrl})
   `;
 
-export { createItem };
+const getAllItems = async (categoryId) =>
+	await sql`SELECT * FROM items WHERE category_id = ${categoryId}`;
+
+export { createItem, getAllItems };
