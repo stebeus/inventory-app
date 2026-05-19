@@ -5,8 +5,12 @@ const timestamps = [
 
 const tables = Object.freeze([
 	{
-		name: '',
-		columns: [...timestamps],
+		name: 'categories',
+		columns: [
+			'name VARCHAR (25) NOT NULL',
+			'img_url TEXT NOT NULL',
+			...timestamps,
+		],
 	},
 ]);
 
