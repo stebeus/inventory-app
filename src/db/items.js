@@ -17,4 +17,12 @@ const getItem = async (id) => {
 const getItemsByName = async (name) =>
 	await sql`SELECT * FROM items WHERE name ILIKE ${`%${name}%`}`;
 
-export { createItem, getAllItems, getItem, getItemsByName };
+const getItemCount = async (categoryId) => {
+	const [{ itemCount }] = await sql`
+    SELECT COUNT(*) AS item_count FROM items WHERE category_id = ${categoryId}
+  `;
+
+	return itemCount;
+};
+
+export { createItem, getAllItems, getItem, getItemCount, getItemsByName };
