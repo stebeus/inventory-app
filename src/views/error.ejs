@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+	<%- include('partials/metadata', locals.title) %>
+	<body>
+		<div id="root">
+			<h1><%= error.status ?? 500 %></h1>
+			<p><%= error.message %></p>
+			<a href="/">Go back home</a>
+			<% if (nodeEnv !== 'production') { %>
+			  <pre><%= error.stack %></pre>
+			<% } %>
+		</div>
+	</body>
+</html>
