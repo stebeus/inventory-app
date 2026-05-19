@@ -8,4 +8,9 @@ const getAllCategories = async () => await sql`SELECT * FROM categories`;
 const getCategory = async (id) =>
 	await sql`SELECT * FROM categories WHERE id = ${id}`;
 
-export { createCategory, getAllCategories, getCategory };
+const updateCategory = async (name, imgUrl, id) =>
+	await sql`
+    UPDATE categories SET name = ${name}, img_url = ${imgUrl} WHERE id = ${id}
+  `;
+
+export { createCategory, getAllCategories, getCategory, updateCategory };
