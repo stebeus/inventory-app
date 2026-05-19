@@ -36,8 +36,11 @@ const updateItem = async (name, description, imgUrl, id) =>
     WHERE id = ${id}
   `;
 
+const deleteItem = async (id) => await sql`DELETE FROM items WHERE id = ${id}`;
+
 export {
 	createItem,
+	deleteItem,
 	getAllItems,
 	getItem,
 	getItemCount,
