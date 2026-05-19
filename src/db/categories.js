@@ -5,4 +5,7 @@ const createCategory = async (name, imgUrl) =>
 
 const getAllCategories = async () => await sql`SELECT * FROM categories`;
 
-export { createCategory, getAllCategories };
+const getCategory = async (id) =>
+	await sql`SELECT * FROM categories WHERE id = ${id}`;
+
+export { createCategory, getAllCategories, getCategory };
