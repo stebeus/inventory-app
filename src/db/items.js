@@ -14,4 +14,7 @@ const getItem = async (id) => {
 	return item;
 };
 
-export { createItem, getAllItems, getItem };
+const getItemsByName = async (name) =>
+	await sql`SELECT * FROM items WHERE name ILIKE ${`%${name}%`}`;
+
+export { createItem, getAllItems, getItem, getItemsByName };
