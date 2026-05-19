@@ -15,7 +15,7 @@ const tables = Object.freeze([
 		],
 	},
 	{
-		table: 'items',
+		name: 'items',
 		columns: [
 			constrainToFk('category', 'categories'),
 			'name VARCHAR (25) NOT NULL',
