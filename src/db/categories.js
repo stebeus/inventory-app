@@ -13,4 +13,16 @@ const updateCategory = async (name, imgUrl, id) =>
     UPDATE categories SET name = ${name}, img_url = ${imgUrl} WHERE id = ${id}
   `;
 
-export { createCategory, getAllCategories, getCategory, updateCategory };
+const deleteCategory = async (id) =>
+	await sql`
+    DELETE FROM items WHERE category_id = ${id};
+    DELETE FROM categories WHERE id = ${id}
+  `;
+
+export {
+	createCategory,
+	deleteCategory,
+	getAllCategories,
+	getCategory,
+	updateCategory,
+};
