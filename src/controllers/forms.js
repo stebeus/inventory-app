@@ -116,7 +116,7 @@ const renderCreateItem = (req, res, status, errors) => {
 
 const renderEditItem = async (req, res, status, errors) => {
 	const {
-		params: { itemId },
+		params: { categoryId, itemId },
 	} = req;
 
 	const { name, description, imgUrl } = await itemModel.getItem(itemId);
@@ -125,7 +125,7 @@ const renderEditItem = async (req, res, status, errors) => {
 		res,
 		{
 			title: `Edit ${name}`,
-			action: `edit-item/${itemId}`,
+			action: `edit-item/${categoryId}/${itemId}`,
 			errors,
 			hasDescription: true,
 			values: [name, description, imgUrl],
@@ -176,7 +176,7 @@ const editItem = async (req, res) => {
 
 		await itemModel.updateItem(name, description, imgUrl, itemId);
 
-		res.redirect(`/categories/${categoryId}/`);
+		res.redirect(`/categories/${categoryId}/item/${itemId}/`);
 	} catch (error) {
 		return renderEditItem(req, res, BAD_REQUEST_CODE, error.messages);
 	}

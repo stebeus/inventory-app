@@ -16,11 +16,11 @@ const router = Router();
 router.get('/create-category', getCreateCategory);
 router.get('/edit-category/:categoryId', getEditCategory);
 router.get('/create-item/:categoryId', getCreateItem);
-router.get('/edit-item/:itemId', getEditItem);
+router.get('/edit-item/:categoryId/:itemId', getEditItem);
 
 router.post('/create-category', createCategory);
 router.post('/create-item/:categoryId', createItem);
 router.post('/edit-category/:categoryId', editCategory);
-router.post('/edit-item/:itemId', editItem);
+router.post('/edit-item/:categoryId/:itemId', editItem);
 
 export { router as forms };
