@@ -2,6 +2,26 @@
 <html lang="en">
 	<%- include('partials/metadata', locals.title) %>
 	<body>
-		<div id="root"></div>
+		<div id="root">
+			<%- include('partials/navbar') %>
+			<main>
+				<%- include('partials/tabs') %>
+
+				<%- include('partials/forms/search') %>
+
+				<div class="grid">
+					<% for (const { id, name, imgUrl } of items) { %>
+						<div class="cell">
+							<%- include('partials/img-link', {
+								href: `item/${id}/`,
+								name,
+								imgUrl,
+							}) %>
+						</div>
+					<% } %>
+				</div>
+			</main>
+			<%- include('partials/footer') %>
+		</div>
 	</body>
 </html>
