@@ -5,5 +5,6 @@ import { getIndex } from '#root/controllers/index.js';
 const router = Router();
 
 router.get('/', getIndex);
+router.get('/categories/:categoryId/', getIndex);
 
 export { router as index };
