@@ -154,7 +154,7 @@ const createItem = async (req, res) => {
 
 		await itemModel.createItem(categoryId, name, description, imgUrl);
 
-		res.redirect('/manage-categories/');
+		res.redirect(`/manage-categories/${categoryId}/`);
 	} catch (error) {
 		return renderCreateItem(req, res, BAD_REQUEST_CODE, error.messages);
 	}
@@ -176,7 +176,7 @@ const editItem = async (req, res) => {
 
 		await itemModel.updateItem(name, description, imgUrl, itemId);
 
-		res.redirect(`/manage-categories/${categoryId}/`);
+		res.redirect(`/categories/${categoryId}/`);
 	} catch (error) {
 		return renderEditItem(req, res, BAD_REQUEST_CODE, error.messages);
 	}
