@@ -4,7 +4,11 @@ import express from 'express';
 
 import { handleError, handleNotFoundError } from './controllers/errors.js';
 import { pino } from './lib/pino-http.js';
+import { forms } from './routers/forms.js';
 import { index } from './routers/index.js';
+import { item } from './routers/item.js';
+import { manageCategories } from './routers/manage-categories.js';
+import { search } from './routers/search.js';
 
 const app = express();
 
@@ -19,6 +23,10 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(index);
+app.use(forms);
+app.use(item);
+app.use(manageCategories);
+app.use(search);
 
 app.use(handleNotFoundError);
 app.use(handleError);
