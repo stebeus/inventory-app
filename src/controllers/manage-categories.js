@@ -12,7 +12,7 @@ const getManageCategories = async (req, res) => {
 	const categories = await categoryModel.getAllCategories();
 	const itemCount = await getItemCount(categoryId);
 
-	res.render('index', {
+	res.render('manage-categories', {
 		title: category.name,
 		categories,
 		category,

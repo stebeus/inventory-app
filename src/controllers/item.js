@@ -7,7 +7,7 @@ const getItem = async (req, res) => {
 
 	const item = await itemModel.getItem(itemId);
 
-	res.render('index', { title: item.name, item });
+	res.render('item', { title: item.name, item });
 };
 
 const deleteItem = async (req, res) => {
