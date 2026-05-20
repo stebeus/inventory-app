@@ -9,13 +9,13 @@ const createItem = async (categoryId, name, description, imgUrl) =>
 const getAllItems = async (categoryId) =>
 	await sql`SELECT * FROM items WHERE category_id = ${categoryId}`;
 
+const getAllItemsByName = async (name) =>
+	await sql`SELECT * FROM items WHERE name ILIKE ${`%${name}%`}`;
+
 const getItem = async (id) => {
 	const [item] = await sql`SELECT * FROM items WHERE id = ${id}`;
 	return item;
 };
-
-const getItemsByName = async (name) =>
-	await sql`SELECT * FROM items WHERE name ILIKE ${`%${name}%`}`;
 
 const getItemCount = async (categoryId) => {
 	const [{ itemCount }] = await sql`
@@ -42,8 +42,8 @@ export {
 	createItem,
 	deleteItem,
 	getAllItems,
+	getAllItemsByName,
 	getItem,
 	getItemCount,
-	getItemsByName,
 	updateItem,
 };
