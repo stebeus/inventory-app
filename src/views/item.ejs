@@ -14,7 +14,10 @@
 						<a href="/edit-item/<%= item.id %>">Edit item</a>
 					</li>
 					<li class="action">
-						<form action="/delete-item/<%= item.id %>" method="post">
+						<form
+							action="/delete-item/<%= categoryId %>/<%= item.id %>"
+							method="post"
+						>
 							<button type="submit">Delete item</button>
 						</form>
 					</li>

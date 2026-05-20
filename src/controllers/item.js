@@ -2,12 +2,12 @@ import * as itemModel from '#root/db/models/items.js';
 
 const getItem = async (req, res) => {
 	const {
-		params: { itemId },
+		params: { categoryId, itemId },
 	} = req;
 
 	const item = await itemModel.getItem(itemId);
 
-	res.render('item', { title: item.name, item });
+	res.render('item', { title: item.name, item, categoryId });
 };
 
 const deleteItem = async (req, res) => {
