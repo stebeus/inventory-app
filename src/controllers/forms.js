@@ -139,19 +139,24 @@ const getCreateItem = (req, res) => renderCreateItem(req, res);
 const getEditItem = (req, res) => renderEditItem(req, res);
 
 const createItem = async (req, res) => {
+	const {
+		body,
+		params: { categoryId },
+	} = req;
+
 	try {
 		const validatedData = await vine.validate({
 			schema: itemSchema,
-			data: req.body,
+			data: body,
 		});
 
-		const { name, imgUrl } = validatedData;
+		const { name, description, imgUrl } = validatedData;
 
-		await itemModel.createItem(name, imgUrl);
+		await itemModel.createItem(categoryId, name, description, imgUrl);
 
 		res.redirect('/manage-categories/');
 	} catch (error) {
-		return renderCreateItem(res, BAD_REQUEST_CODE, error.messages);
+		return renderCreateItem(req, res, BAD_REQUEST_CODE, error.messages);
 	}
 };
 
@@ -167,9 +172,9 @@ const editItem = async (req, res) => {
 			data: body,
 		});
 
-		const { name, imgUrl } = validatedData;
+		const { name, description, imgUrl } = validatedData;
 
-		await itemModel.updateItem(name, imgUrl, itemId);
+		await itemModel.updateItem(name, description, imgUrl, itemId);
 
 		res.redirect(`/manage-categories/${categoryId}/`);
 	} catch (error) {
