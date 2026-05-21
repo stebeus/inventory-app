@@ -1,5 +1,5 @@
 import { getAllCategories, getCategory } from '#root/db/models/categories.js';
-import { getAllItems } from '#root/db/models/items.js';
+import { getAllItems, getAllItemsByName } from '#root/db/models/items.js';
 
 const getIndex = async (req, res) => {
 	const {
@@ -15,4 +15,15 @@ const getIndex = async (req, res) => {
 	res.render('index', { title: name, categories, items });
 };
 
-export { getIndex };
+const getSearch = async (req, res) => {
+	const {
+		query: { q },
+	} = req;
+
+	const categories = await getAllCategories();
+	const items = await getAllItemsByName(q);
+
+	res.render('index', { title: 'Search', categories, items });
+};
+
+export { getIndex, getSearch };

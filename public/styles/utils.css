@@ -1,0 +1,110 @@
+.border-inset {
+	background-color: var(--color-bg);
+	border: var(--border-inset);
+	border-top-color: var(--color-shadow);
+	border-left-color: var(--color-shadow);
+}
+
+.border-outset {
+	background-color: var(--color-bg);
+	border: var(--border-outset);
+	border-right-color: var(--color-shadowLight);
+	border-bottom-color: var(--color-shadowLight);
+	border-radius: 0.125rem;
+	corner-shape: notch;
+	box-shadow: var(--shadow-border) var(--color-shadowDark);
+
+	@supports not (corner-shape: notch) {
+		border-radius: var(--size-xs);
+	}
+}
+
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding: var(--size-xs) var(--size-xl);
+	background-color: var(--color-button);
+	border: var(--border-highlight);
+	box-shadow: var(--shadow-border) var(--color-shadowDark);
+}
+
+.button-delete {
+	text-shadow: var(--shadow-text) var(--color-shadowRed);
+	background-color: var(--color-buttonRed);
+	border-color: var(--color-highlightRed);
+	box-shadow: var(--shadow-border) var(--color-shadowDarkRed);
+}
+
+.center-self-xy {
+	place-self: center;
+}
+
+.center-xy {
+	place-content: center;
+	place-items: center;
+}
+
+.container {
+	gap: var(--size-xl);
+	padding: var(--size-l);
+	background-color: var(--color-fg);
+}
+
+.flex {
+	display: flex;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+.grid {
+	--size-cell: 64px;
+	display: grid;
+	grid-template-columns: repeat(4, var(--size-cell));
+	overflow-y: auto;
+	scrollbar-color: var(--color-fg) var(--color-button);
+	scrollbar-width: thin;
+
+	@media (width >= 344px) {
+		grid-template-columns: repeat(auto-fit, var(--size-cell));
+	}
+
+	@media (width >= 640px) {
+		width: 580px;
+	}
+}
+
+.fixed-height {
+	height: 430px;
+}
+
+.interactive {
+	cursor: pointer;
+
+	&:hover {
+		filter: brightness(1.125);
+	}
+}
+
+.position-relative {
+	--size-negativeM: -1rem;
+
+	position: relative;
+	top: var(--size-negativeM);
+	margin-bottom: var(--size-negativeM);
+}
+
+.stack {
+	flex-direction: column;
+}
+
+.text-inverted {
+	color: var(--color-textInverted);
+}
+
+.text-shadow {
+	text-shadow: var(--shadow-text) var(--color-shadow);
+}

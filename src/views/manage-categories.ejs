@@ -2,35 +2,44 @@
 <html lang="en">
 	<%- include('partials/metadata', locals.title) %>
 	<body>
-		<div id="root">
+		<div id="root" class="center-xy flex stack">
 			<%- include('partials/navbar') %>
-			<main>
-				<a href="/create-category">Create category</a>
-
+			<main class="flex stack">
 				<%- include('partials/tabs', { route: 'manage-categories' }) %>
 
-				<section class="category">
-					<img src="<%= category.imgUrl %>" alt="" width="128" height="128">
-					<h3><%= category.name %></h3>
-					<p>Item quantity: <%= itemCount %></p>
+				<section class="border-outset center-xy container flex position-relative stack">
+					<div class="info center-xy flex stack">
+						<img
+							class="border-inset"
+							src="<%= category.imgUrl %>"
+							alt=""
+							width="128"
+							height="128"
+						>
+						<h1><%= category.name %></h1>
+						<p>Item quantity: <%= itemCount %></p>
+					</div>
 
-					<ul class="actions">
+					<ul class="actions flex flex-wrap">
 						<li class="action">
-							<a href="/create-item/<%= category.id %>">Create item</a>
+							<%- include('partials/button-link', {
+								href: `/create-item/${category.id}`,
+								label: 'Create item',
+							}) %>
 						</li>
 						<li class="action">
-							<a href="/edit-category/<%= category.id %>">Edit category</a>
+							<%- include('partials/button-link', {
+								href: `/edit-category/${category.id}`,
+								label: 'Edit category',
+							}) %>
 						</li>
 
-						<!-- For some reason, Postgres.js gives incorrect value types -->
-						<% if (Number(category.id) !== 1) { %>
+						<% if (parseInt(category.id) !== 1) { %>
 							<li class="action">
-								<form
-									action="/delete-category/<%= category.id %>"
-									method="post"
-								>
-									<button type="submit">Delete category</button>
-								</form>
+								<%- include('partials/forms/delete-button', {
+									action: `/delete-category/${category.id}`,
+									label: 'Delete category',
+								}) %>
 							</li>
 						<% } %>
 					</ul>

@@ -43,7 +43,7 @@ const renderEditCategory = async (req, res, status, errors) => {
 			title: `Edit ${name}`,
 			action: `edit-category/${categoryId}`,
 			errors,
-			values: [name, imgUrl],
+			values: { name, imgUrl },
 		},
 		status,
 	);
@@ -128,7 +128,7 @@ const renderEditItem = async (req, res, status, errors) => {
 			action: `edit-item/${categoryId}/${itemId}`,
 			errors,
 			hasDescription: true,
-			values: [name, description, imgUrl],
+			values: { name, description, imgUrl },
 		},
 		status,
 	);

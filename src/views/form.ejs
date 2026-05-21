@@ -2,33 +2,32 @@
 <html lang="en">
 	<%- include('partials/metadata', locals.title) %>
 	<body>
-		<div id="root">
+		<div id="root" class="center-xy">
 			<%- include('partials/navbar') %>
-			<main>
-				<fieldset>
-					<legend><%= locals.title %></legend>
+			<main class="border-outset container">
+				<form class="form flex stack" action="/<%= action %>" method="post">
+					<h1><%= locals.title %></h1>
 
-					<form action="/<%= action %>" method="post">
-						<% if (locals.errors != null) {%>
-							<ul class="errors">
-								<% for (const { message } of errors) { %>
-									<li class="error"><%= message %></li>
-								<% } %>
-							</ul>
-						<% } %>
+					<% if (locals.errors != null) {%>
+						<ul class="errors">
+							<% for (const { message } of errors) { %>
+								<li class="error"><%= message %></li>
+							<% } %>
+						</ul>
+					<% } %>
 
 						<%- include('partials/forms/input-field', {
 							label: 'Name',
 							name: 'name',
 							type: 'text',
-							value: locals.values[0],
+							value: locals.values.name,
 						}) %>
 
 						<% if (locals.hasDescription) { %>
 							<%-	include('partials/forms/textarea-field', {
 								label: 'Description',
 								name: 'description',
-								value: locals.values[1]
+								value: locals.values.description
 							}) %>
 						<% } %>
 
@@ -36,13 +35,12 @@
 							label: 'Image link',
 							name: 'imgUrl',
 							type: 'url',
-							value: locals.values[2],
+							value: locals.values.imgUrl,
 							placeholder:'https://site.com/image_name.png',
 						}) %>
 
-						<button type="submit">Submit</button>
-					</form>
-				</fieldset>
+					<button class="button text-inverted text-shadow" type="submit">Submit</button>
+				</form>
 			</main>
 			<%- include('partials/footer') %>
 		</div>

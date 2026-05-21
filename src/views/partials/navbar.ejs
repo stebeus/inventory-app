@@ -1,11 +1,9 @@
-<header class="navbar">
-	<h1 class="logo" title="Inventory">
-		<a href="/">Inventory app</a>
-	</h1>
-	<nav>
-		<ul>
-			<li><a href="/">Inventory</a></li>
-			<li><a href="/manage-categories/">Manage categories</a></li>
-		</ul>
-	</nav>
-</header>
+<nav class="navbar flex flex-wrap">
+	<ul>
+		<li><a href="/">Inventory</a></li>
+		<%- include('vr') %>
+		<li><a href="/manage-categories/">Manage categories</a></li>
+		<%- include('vr') %>
+		<li><a href="/create-category">Create category</a></li>
+	</ul>
+</nav>

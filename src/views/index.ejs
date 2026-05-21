@@ -2,23 +2,27 @@
 <html lang="en">
 	<%- include('partials/metadata', locals.title) %>
 	<body>
-		<div id="root">
+		<div id="root" class="center-xy">
 			<%- include('partials/navbar') %>
-			<main>
+			<main class="flex stack">
 				<%- include('partials/tabs') %>
 
-				<%- include('partials/forms/search') %>
+				<div
+					class="border-outset container fixed-height flex position-relative stack"
+				>
+					<%- include('partials/forms/search') %>
 
-				<div class="grid">
-					<% for (const { id, name, imgUrl } of items) { %>
-						<div class="cell">
-							<%- include('partials/img-link', {
-								href: `item/${id}/`,
-								name,
-								imgUrl,
-							}) %>
-						</div>
-					<% } %>
+					<div class="grid">
+						<% for (const { categoryId, id, name, imgUrl } of items) { %>
+							<div class="cell border-inset">
+								<%- include('partials/img-link', {
+									href: `/categories/${categoryId}/item/${id}/`,
+									name,
+									imgUrl,
+								}) %>
+							</div>
+						<% } %>
+					</div>
 				</div>
 			</main>
 			<%- include('partials/footer') %>

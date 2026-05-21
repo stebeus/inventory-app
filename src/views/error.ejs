@@ -2,13 +2,21 @@
 <html lang="en">
 	<%- include('partials/metadata', locals.title) %>
 	<body>
-		<div id="root">
-			<h1><%= error.status ?? 500 %></h1>
-			<p><%= error.message %></p>
-			<a href="/">Go back to inventory</a>
-			<% if (nodeEnv !== 'production') { %>
-			  <pre><%= error.stack %></pre>
-			<% } %>
+		<div id="root" class="center-xy">
+			<div class="border-outset center-xy container fixed-height flex stack">
+				<h1><%= error.status ?? 500 %></h1>
+				<p><%= error.message %></p>
+				<a
+					class="button text-inverted text-shadow"
+					style="max-width: fit-content;"
+					href="/"
+				>
+					Go back to inventory
+				</a>
+				<% if (nodeEnv !== 'production') { %>
+					<pre><%= error.stack %></pre>
+				<% } %>
+			</div>
 		</div>
 	</body>
 </html>

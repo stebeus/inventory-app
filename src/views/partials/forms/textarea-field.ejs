@@ -1,4 +1,8 @@
-<label class="field">
-	<span class="label"><%= label %></span>
-	<textarea name="<%= name %>" required><%= locals.value %></textarea>
+<label class="field flex stack">
+	<span class="label"><%= label %>:</span>
+	<textarea
+		class="border-inset text-inverted text-shadow"
+		name="<%= name %>"
+		required
+	><%= locals.value %></textarea>
 </label>

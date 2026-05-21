@@ -1,0 +1,117 @@
+@layer reset, base, partials, utils;
+
+@import url('reset.css') layer(reset);
+@import url('partials.css') layer(partials);
+@import url('utils.css') layer(utils);
+
+@font-face {
+	font-family: "Mac's Minecraft";
+	src: url('/fonts/MacsMinecraft.woff2');
+	font-display: swap;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "Mac's Minecraft";
+	src: url('/fonts/MacsMinecraftBold.woff2');
+	font-display: swap;
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "Mac's Minecraft";
+	src: url('/fonts/MacsMinecraftItalic.woff2');
+	font-display: swap;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "Mac's Minecraft";
+	src: url('/fonts/MacsMinecraftBoldItalic.woff2');
+	font-display: swap;
+	font-style: italic;
+	font-weight: 700;
+}
+
+:root {
+	/* Borders */
+	--borderWidth-s: 2px;
+
+	--border-ruler: var(--borderWidth-s) solid var(--color-bg);
+	--border-highlight: var(--borderWidth-s) outset var(--color-highlight);
+	--border-inset: 3px solid var(--color-textInverted);
+	--border-outset: 8px solid var(--color-textInverted);
+
+	/* Colors */
+	--color-bg: oklch(0.63 0 0);
+	--color-fg: oklch(0.82 0 0);
+
+	--color-button: oklch(0.53 0 0);
+
+	--color-highlight: oklch(0.73 0 0);
+
+	--color-shadowDark: oklch(0.15 0 0);
+	--color-shadow: oklch(0.33 0 0);
+	--color-shadowLight: oklch(0.45 0 0);
+
+	--color-textMuted: oklch(0.31 0 0);
+	--color-textInverted: oklch(0.95 0 0);
+
+	--shade-red: 0.2 29;
+
+	--color-buttonRed: oklch(from var(--color-button) l var(--shade-red));
+	--color-highlightRed: oklch(from var(--color-highlight) l var(--shade-red));
+	--color-shadowDarkRed: oklch(from var(--color-shadowDark) l var(--shade-red));
+	--color-shadowRed: oklch(from var(--color-shadow) l var(--shade-red));
+
+	/* Shadows */
+	--shadow-border: 0 0 0 2px;
+	--shadow-text: 2px 2px;
+
+	/* Sizing */
+	--size-2xs: 0.25rem;
+	--size-xs: 0.5rem;
+	--size-s: 0.75rem;
+	--size-m: 1rem;
+	--size-l: 1.25rem;
+	--size-xl: 1.5rem;
+	--size-2xl: 2rem;
+
+	/* Typography */
+	--ff: "Mac's Minecraft", monospace;
+
+	--fw-medium: 400;
+	--fw-bold: 700;
+
+	--font-p: var(--fw-medium) var(--size-m) var(--ff);
+	--font-heading: var(--fw-bold) var(--size-m) var(--ff);
+}
+
+#root {
+	padding: 0 var(--size-m);
+	font: var(--font-p);
+	color: var(--color-textMuted);
+	background:
+		linear-gradient(oklch(0 0 0 / 0.6)),
+		url('/MinecraftGlxyHazorMyNewWallpaperBlurred.png') no-repeat;
+	background-size: cover;
+}
+
+h1,
+legend {
+	font: var(--font-heading);
+}
+
+img {
+	image-rendering: pixelated;
+}
+
+input,
+textarea {
+	padding: 0 var(--size-2xs);
+}
+
+pre {
+	max-width: 1000px;
+	overflow-x: auto;
+}

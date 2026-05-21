@@ -1,0 +1,169 @@
+@scope (.actions) {
+	:scope {
+		gap: var(--size-s);
+	}
+
+	.action {
+		flex: 1 1 fit-content;
+	}
+}
+
+@scope (.search) {
+	:scope {
+		gap: var(--size-s);
+	}
+
+	.label {
+		flex-shrink: 0;
+	}
+
+	input {
+		width: 100%;
+	}
+}
+
+@scope (.form) {
+	:scope {
+		gap: var(--size-m);
+	}
+
+	h1 {
+		text-transform: capitalize;
+	}
+
+	form {
+		gap: var(--size-xs);
+	}
+}
+
+@scope (.footer) {
+	:scope {
+		gap: var(--size-s);
+		padding-top: var(--size-xs);
+		font-size: var(--size-s);
+		color: var(--color-fg);
+
+		@media (width >= 370px) {
+			font-size: var(--size-m);
+		}
+
+		@media (width >= 375px) and (height >= 667px), (width >= 452px) {
+			padding-top: var(--size-m);
+		}
+	}
+
+	a:hover {
+		color: var(--color-textInverted);
+	}
+
+	a:has(.svg-icon) {
+		transition: transform 750ms;
+
+		&:hover {
+			transform: rotate(1turn);
+		}
+	}
+}
+
+@scope (.info) {
+	:scope {
+		gap: var(--size-2xs);
+	}
+
+	img {
+		margin-bottom: var(--size-2xs);
+	}
+}
+
+@scope (.label) {
+	:scope {
+		text-transform: capitalize;
+	}
+}
+
+@scope (.navbar) {
+	:scope {
+		gap: var(--size-2xs);
+		padding: var(--size-xs) 0;
+		margin-left: var(--size-xs);
+		color: var(--color-fg);
+
+		@media (width >= 375px) and (height >= 667px), (width >= 452px) {
+			padding: 0 0 var(--size-m);
+		}
+	}
+
+	ul {
+		display: contents;
+		list-style-type: '>';
+	}
+
+	li {
+		width: 100%;
+		padding-left: var(--size-xs);
+	}
+
+	a:hover {
+		color: var(--color-textInverted);
+	}
+
+	.vr {
+		display: none;
+	}
+
+	@media (width >= 548px) {
+		:scope {
+			gap: var(--size-xs);
+			margin: 0;
+		}
+
+		ul {
+			list-style-type: '';
+		}
+
+		li {
+			width: auto;
+		}
+
+		.vr {
+			display: block;
+		}
+	}
+
+	@media (width >= 580px) {
+		:scope {
+			gap: var(--size-m);
+		}
+	}
+}
+
+@scope (.tabs) {
+	:scope {
+		gap: var(--size-xs);
+		max-width: 636px;
+
+		overflow-x: auto;
+		scrollbar-color: var(--color-fg) var(--color-button);
+		scrollbar-width: thin;
+
+		/* Flip scrollbar position */
+		transform: rotateX(180deg);
+	}
+
+	.tab {
+		flex: none;
+		padding: var(--size-xs) 0 var(--size-m);
+		transform: scaleY(-1); /* Flip element to original position */
+	}
+
+	img {
+		padding: var(--size-xs);
+	}
+}
+
+@scope (.vr) {
+	:scope {
+		height: var(--size-m);
+		border-left: var(--border-ruler);
+	}
+}
