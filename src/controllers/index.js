@@ -3,7 +3,7 @@ import { getAllItems, getAllItemsByName } from '#root/db/models/items.js';
 
 const getIndex = async (req, res) => {
 	const {
-		params: { categoryId },
+		params: { categoryId = 1 },
 	} = req;
 
 	if (categoryId == null) res.redirect('/categories/1/');
