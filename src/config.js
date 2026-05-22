@@ -6,6 +6,6 @@ try {
 	if (error.code !== 'ENOENT') throw error;
 }
 
-const { DB_URL, HOSTNAME = 'localhost', PORT = 3000 } = env;
+const { DB_URL, PORT = 3000 } = env;
 
-export { DB_URL, HOSTNAME, PORT };
+export { DB_URL, PORT };
