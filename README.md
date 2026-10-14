@@ -1,6 +1,6 @@
 # Inventory app
 
-Add, edit, and delete all items of this public online Minecraft inventory.
+Add, edit, and delete all items of this online public Minecraft inventory.
 
 [Preview](https://inventory-app-8rmh.onrender.com/) 👈
 
